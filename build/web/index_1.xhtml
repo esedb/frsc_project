@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:jsf="http://xmlns.jcp.org/jsf">
+    <h:head>
+        <title>Facelet Title</title>
+        
+        <script type="text/css">
+            #test{
+                background-color: blue;
+            }
+        </script>
+    </h:head>
+    <h:body>
+        
+        Hello from Facelets
+        <form type="post" action="pri_reg">
+            What is your name: <input type="text" name="pri_name"/>
+            <input type="submit"/>
+        </form>
+        
+        <form>
+            <fieldset>
+            <legend>Personal Information</legend>
+            <label for="age"><em>*</em>Age</label>
+            <input id="age"/><br></br>
+            <label for="gender">Gender</label>
+            <select id="gender">
+            <option value="female">Female</option>
+            <option value="male">Male</option>
+            </select><br></br>
+            <label for="comments">When did you first know you wanted to be a
+            zoo-keeper?</label>
+            <textarea id="comments"></textarea>
+            </fieldset>
+        </form>
+        
+        
+        <figure>
+<h2>Wishing Tree</h2>
+<figcaption>Make a wish and toss a red ribbon up into the branches
+of this tree. If it sticks, good fortune may await.</figcaption>
+<img src="wishing_tree.jpg"/>
+</figure>
+        <p id="test">#{testbean.message}</p>
+        <h:form>
+            <h:outputLabel for="inputt"/>
+            <h:inputText id="inputt" required="true" value="#{testbean.newname}">
+                <f:validateLongRange minimum="2" maximum="20"/>
+            </h:inputText>
+            <input type="date" jsf:id="date" name="date"
+value="#{reservationBean.date}" required="required"
+title="Enter or choose a date."/>
+                
+        </h:form>
+        <p>Bruno is here: #{testbean.newname}</p>
+    </h:body>
+    
+</html>
+

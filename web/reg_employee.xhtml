@@ -1,0 +1,279 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Register Personnel</title>
+        <script type="text/javascript" src="jquery.min.js"></script>
+         <link rel="stylesheet" href="login1/css/bimage.css"/>
+        <style type="text/css">
+            img{
+                 width: 80px;
+                height: 100px;
+                display: block;
+            }
+            .required{
+                color: red;
+            }
+            #ulist_form li{
+                padding: 0;
+                display: block;
+                list-style: none;
+                margin: 10px 0 0 0;
+            }
+            #ulist_form{
+                margin:10px auto;
+                max-width: 400px;
+                padding: 20px 12px 10px 20px;
+                font: 13px "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+            }
+            #ulist_form label{
+                margin:0 0 3px 0;
+                padding:0px;
+                display:block;
+                font-weight: bold;
+            }
+            #head{
+                
+            }
+            #container{
+                margin: 1px 1px 1px 1px;
+                padding: 2px 2px 2px 2px;
+                width: 100%;
+                height:100%;
+                            
+                
+            }
+            #form_cont, #form_cont2{
+                margin: 0 auto;
+                display: inline-block;
+                margin: 1px 1px 1px 1px;
+                padding: 2px 2px 2px 2px;
+                padding-top: 0px;
+                width: 35%;
+                height: 50%;
+                overflow: visible;
+            }
+            #button_cont{
+                margin: 0 auto;
+                display: inline-block;
+                margin: 1px 1px 1px 1px;
+                padding: 2px 2px 2px 2px;
+                padding-top: 0px;
+                width: 20%;
+                height: 30%;
+                overflow: visible;
+            }
+            
+            #sub_ul{
+                display: inline-block;
+                list-style-type: none;
+            }
+            #ulist_form input{
+                box-sizing: border-box;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                border:1px solid #43D1AF;
+                padding: 3px;
+                margin:0px;
+                -webkit-transition: all 0.30s ease-in-out;
+                -moz-transition: all 0.30s ease-in-out;
+                -ms-transition: all 0.30s ease-in-out;
+                -o-transition: all 0.30s ease-in-out;
+                outline: none;  
+                
+            }
+            #ulist_form input:focus{
+                -moz-box-shadow: 0 0 8px #88D5E9;
+                -webkit-box-shadow: 0 0 8px #88D5E9;
+                box-shadow: 0 0 8px #43D1AF;
+                border: 2px solid #43D1AF;
+                
+            }
+            
+            #ulist_form li input[type=submit], #ulist_form li input[type=button]{
+                font: 13px "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+                background: #43D1AF;
+                padding: 8px 15px 8px 15px;
+                border: none;
+                color: #fff;
+                
+            }
+            #ulist_form li input[type=submit]:hover{
+                font: 13px "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+                background:#2EBC99;
+                padding: 8px 15px 8px 15px;
+                border: none;
+                color: #fff;
+                
+            }
+            label{
+                font: 13px "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+                color:#43D1AF;
+            }
+            .field-divided{
+                width: 49%;
+            }
+            .field-long{
+                width: 100%;
+            }
+            .visi{
+                visibility: hidden;
+            }
+        </style>
+        
+    </h:head>
+    <h:body>
+       
+        <div id="head">
+            <ui:include src="pers_header.xhtml"/>
+        </div>
+        <div id="container">
+            <h:form enctype="multipart/form-data">
+            <div id="form_cont">
+                
+                    <ul id="ulist_form">
+                        <li>
+                            <label>Full Name <span class="required">*</span></label>
+                            <h:inputText p:type="text" value="#{reg_off.firstname}" id="first_name" class="field-divided" p:placeholder="First">
+                            </h:inputText>&nbsp;<h:inputText p:type="text" id="other_name" value="#{reg_off.othername}"  class="field-divided" p:placeholder="Other Names" />
+                        </li>
+                        <li>
+                            <label>Login_name<span class="required">*</span></label>
+                            <h:inputText p:type="text" value="#{reg_off.login_name}"  class="field-divided" p:placeholder="pedro1" valueChangeListener="#{pers_reg.conForm(event)}"  >
+                                <f:validateLength minimum="2" maximum="10"/>
+                            </h:inputText>
+                            
+                        </li>
+                        <li><label>Password <span class="required">*</span></label>
+                            <h:inputText p:type="password" value="#{reg_off.login_password}"  class="field-divided" p:placeholder="Password"  />                            
+                        </li>
+                        <li>
+                            <label>National Id<span class="required">*</span></label>
+                            <h:inputText p:type="text" value="#{reg_off.national_id}" class="field-divided" p:placeholder="477585994"  />
+                        </li>
+                        <li>
+                            <label>Rank<span class="required">*</span></label>
+                            <h:inputText p:type="text" value="#{reg_off.rank}"  class="field-divided" p:placeholder="Lieutenant"  />
+                            
+                        </li>
+                        <li>
+                            <label>Phone Number<span class="required">*</span></label>
+                            <h:inputText p:type="number" value="#{reg_off.phone_number}"  class="field-divided" p:placeholder="234709876544" converter="javax.faces.Long"/>
+                            
+                        </li>
+                        <li>
+                            <label>Sex<span class="required">*</span></label>
+                            <h:selectOneMenu id="id_sex"
+                                value="#{reg_off.selectedsex}" valueChangeListener="#{reg_off.sexChanged}">
+                                <f:selectItems value="#{reg_off.lists}"/>
+                            </h:selectOneMenu>
+                        </li>
+                        <li>
+                            <label>Enter Birth Date<span class="required">*</span></label>
+                            <h:inputText p:type="Date" value="#{reg_off.birth_date}">
+                                <f:convertDateTime pattern="yyyy-mm-dd" />
+                            </h:inputText>
+                            
+                        </li>
+                         
+                       
+                    </ul>
+                
+            </div>
+            <div id="form_cont2">
+                
+                    <ul id="ulist_form">
+                        
+                        <li>
+                        <label>Enter Date of Employment<span class="required">*</span></label>
+                            <h:inputText p:type="Date" value="#{reg_off.date_of_emp}">
+                                <f:convertDateTime pattern="yyyy-mm-dd" />
+                            </h:inputText>
+                        </li>
+                        
+                        <li>
+                        
+                            <img id="image" src="" class="mimage" />                            
+                            
+                        </li>
+                        
+                        <li>
+                            <h:inputFile value="#{reg_off.file}" p:id="img_file" class="img_class" onchange="readURL(this)">
+                                        
+                            </h:inputFile>
+                            
+                        </li>
+                        
+                               
+                        <script type="text/javascript">
+                                
+                                function readURL(input) {
+                                            if (input.files &amp;&amp; input.files[0]) {
+                                              var reader = new FileReader();
+                                              reader.onload = function(e) {
+                                                $('.mimage').attr('src', e.target.result);
+                                              };
+
+                                              reader.readAsDataURL(input.files[0]);
+                                            }
+                                          }
+
+                                $(".img_class").change(function() {
+                                  readURL(this);
+                                });
+                                     
+                                
+                                </script>
+                        
+                        <h:outputScript name="n_script.js" target="body" />
+                        
+                        <li class="visi">
+                            <label>Rank<span class="required">*</span></label>
+                            <h:inputText p:type="text"   class="field-divided" p:placeholder="Lieutenant"  />
+                            
+                        </li>
+                        
+                        <li>                                                     
+                            <h:commandButton p:type="submit" id="submit_but" value="Submit" action="#{reg_off.subMit()}" >
+                                
+                            </h:commandButton>
+                        </li>
+                        
+                        <li class="visi">
+                            <label>Rank<span class="required">*</span></label>
+                            <h:inputText p:type="text"   class="field-divided" p:placeholder="Lieutenant"  />
+                            
+                        </li>
+                        
+                        <li class="visi">
+                            <label>Rank<span class="required">*</span></label>
+                            <h:inputText p:type="text"   class="field-divided" p:placeholder="Lieutenant"  />
+                            
+                        </li>
+                                             
+                        
+                    </ul>
+                    
+                                
+                
+            </div>
+            <div id="button_cont">
+                    <ul id="ulist_form">
+                                                                                           
+                        
+                        
+                        
+                    </ul>
+                    </div>
+            </h:form>
+            
+        </div>
+        
+        
+    </h:body>
+</html>
+
